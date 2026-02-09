@@ -1,12 +1,12 @@
 import React from 'react';
-import { Product } from '../types';
+import { Product, ViewType } from '../types';
 import { ShoppingCart, Eye, Star } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
   onAddToCart?: (product: Product) => void;
   onQuickView?: (product: Product) => void;
-  onNavigate?: (view: string, id: string) => void;
+  onNavigate?: (view: ViewType, id?: string) => void;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, onQuickView, onNavigate }) => {
