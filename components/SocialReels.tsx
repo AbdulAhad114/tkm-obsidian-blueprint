@@ -27,7 +27,7 @@ const SocialReels: React.FC = () => {
           {videos.map((videoUrl, idx) => (
             <div
               key={idx}
-              className="w-[100vw] sm:w-[45vw] lg:w-[280px] flex-shrink-0 snap-center aspect-[9/16] rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow relative group bg-black"
+              className="w-[80vw] sm:w-[45vw] lg:w-[280px] flex-shrink-0 snap-center h-[70vh] rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow relative group bg-black"
             >
               <video
                 src={videoUrl}
