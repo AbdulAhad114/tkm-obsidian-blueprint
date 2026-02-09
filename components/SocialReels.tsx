@@ -22,7 +22,7 @@ const SocialReels: React.FC = () => {
         </div>
       </div>
 
-      <div className="w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory px-4 md:px-6 lg:overflow-visible">
+      <div className="w-full overflow-x-auto snap-x snap-mandatory px-4 md:px-6 lg:overflow-visible" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}>
         <div className="flex gap-4 w-max lg:w-auto lg:justify-center lg:mx-auto">
           {videos.map((videoUrl, idx) => (
             <div
