@@ -19,6 +19,8 @@
   "devDependencies": {
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
+    "@vitejs/plugin-react-swc": "^4.2.3",
+    "lovable-tagger": "^1.1.13",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"
   }
