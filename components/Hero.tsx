@@ -23,9 +23,9 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       <div className="absolute inset-0 flex items-center w-full px-4 md:px-16">
         <div className="max-w-xl text-white md:pl-0 mt-12 md:mt-0">
           <span className="block text-tkm-teal font-bold tracking-widest uppercase text-xs mb-3">Official TKM Distributor</span>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-snug drop-shadow-lg">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-none drop-shadow-lg">
             Premium Sanitaryware <br/>
-            <span className="font-light text-4xl md:text-6xl leading-snug">& Luxury Kitchen Fittings</span>
+            <span className="font-light text-4xl md:text-6xl leading-none">& Luxury Kitchen Fittings</span>
           </h1>
           <p className="mb-8 text-gray-100 text-sm md:text-base font-medium max-w-md drop-shadow-md">
             Upgrade your home with Pakistan's finest imported faucets, rain showers, and smart organizers. Quality you can trust.
