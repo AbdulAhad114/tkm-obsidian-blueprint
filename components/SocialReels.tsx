@@ -22,12 +22,12 @@ const SocialReels: React.FC = () => {
         </div>
       </div>
 
-      <div className="w-full flex justify-center">
-        <div className="flex gap-4">
+      <div className="w-full overflow-x-auto scrollbar-hide snap-x snap-mandatory px-4 md:px-6 lg:overflow-visible">
+        <div className="flex gap-4 w-max lg:w-auto lg:justify-center lg:mx-auto">
           {videos.map((videoUrl, idx) => (
             <div
               key={idx}
-              className="w-[250px] md:w-[280px] aspect-[9/16] rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow relative group bg-black"
+              className="w-[80vw] sm:w-[45vw] lg:w-[280px] flex-shrink-0 snap-center aspect-[9/16] rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-shadow relative group bg-black"
             >
               <video
                 src={videoUrl}
