@@ -8,7 +8,7 @@ interface Props {
 
 export const AdvancedShowers: React.FC<Props> = ({ onNavigate }) => {
   return (
-    <section id="wall-showers" className="mb-16">
+    <section id="wall-showers">
       <SectionTitle title="Advanced Shower Systems" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
         <div 

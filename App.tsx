@@ -12,6 +12,7 @@ import { Footer } from './components/Footer';
 import { GeminiAssistant } from './components/GeminiAssistant';
 import { ComplaintForm } from './components/ComplaintForm';
 import { CollectionPage } from './components/CollectionPage';
+import { LifestyleBanner } from './components/LifestyleBanner';
 import { ProductDetail } from './components/ProductDetail';
 import { CartDrawer } from './components/cart/CartDrawer';
 import { QuickViewModal } from './components/QuickViewModal';
@@ -197,31 +198,53 @@ const App: React.FC = () => {
                 <Hero onNavigate={navigateTo} />
                 <BenefitsBar />
                 <ScrollFadeIn />
-                <div className="mt-20">
+
+                {/* Shop By Category */}
+                <div className="bg-stone-50 py-16 md:py-24">
                    <ShopByArea onNavigate={navigateTo} />
                 </div>
+
+                {/* Subtle divider */}
+                <div className="flex justify-center py-8">
+                  <div className="w-16 h-[2px] bg-stone-300" />
+                </div>
                 
-                {/* Featured Products from Shopify */}
-                <div className="py-4 px-4 md:px-6">
-                    <div className="flex justify-center my-8 md:my-12">
+                {/* Featured Products */}
+                <div className="bg-white py-12 md:py-20 px-4 md:px-6">
+                    <div className="flex justify-center mb-8 md:mb-12">
                       <h2 className="bg-black text-white text-xl md:text-2xl font-bold uppercase py-3 px-8 tracking-wider text-center">Featured Products</h2>
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6">
-                      {/* Display first 4 items from fetched data */}
                       {realProducts.slice(0, 4).map(p => (
                         <ProductCard key={p.id} product={p} onAddToCart={addToCart} onQuickView={setQuickViewProduct} onNavigate={navigateTo} />
                       ))}
                     </div>
                 </div>
 
-                <div className="w-full px-4 md:px-6">
+                {/* Lifestyle Banner */}
+                <LifestyleBanner />
+
+                {/* Kitchen Faucets */}
+                <div className="bg-stone-50 py-16 md:py-24 px-4 md:px-6">
                     <KitchenMixers onNavigate={navigateTo} />
+                </div>
+
+                {/* Showers */}
+                <div className="bg-white py-16 md:py-24 px-4 md:px-6">
                     <AdvancedShowers onNavigate={navigateTo} />
+                </div>
+
+                {/* Sinks */}
+                <div className="bg-stone-50 py-16 md:py-24 px-4 md:px-6">
                     <StainlessSteel onNavigate={navigateTo} />
                 </div>
-                <SocialReels />
-                <CustomerReviews />
-                {/* <SEOContent /> */}
+
+                <div className="bg-white">
+                  <SocialReels />
+                </div>
+                <div className="bg-stone-50">
+                  <CustomerReviews />
+                </div>
                 <FaqSection />
                 <BottomBanner />
             </div>
