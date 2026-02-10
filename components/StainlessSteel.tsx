@@ -44,7 +44,7 @@ const products: Product[] = [
 
 export const StainlessSteel: React.FC<Props> = ({ onNavigate }) => {
   return (
-    <section id="sink-organisers" className="mb-16">
+    <section id="sink-organisers">
       <SectionTitle title="Stainless Steel Sinks" />
       
       {/* Banner */}

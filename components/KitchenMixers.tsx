@@ -52,7 +52,7 @@ const products: Product[] = [
 
 export const KitchenMixers: React.FC<Props> = ({ onNavigate }) => {
   return (
-    <section id="kitchen-faucets" className="mb-16">
+    <section id="kitchen-faucets">
       <SectionTitle title="Premium Kitchen Faucets" />
       
       {/* Banner */}
