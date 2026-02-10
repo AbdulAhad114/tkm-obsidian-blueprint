@@ -196,7 +196,6 @@ const App: React.FC = () => {
         {view === 'home' && (
             <div className="w-full max-w-[1920px] mx-auto">
                 <Hero onNavigate={navigateTo} />
-                <BenefitsBar />
                 <ScrollFadeIn />
 
                 {/* Shop By Category */}
@@ -204,13 +203,15 @@ const App: React.FC = () => {
                    <ShopByArea onNavigate={navigateTo} />
                 </div>
 
-                {/* Subtle divider */}
-                <div className="flex justify-center py-8">
-                  <div className="w-16 h-[2px] bg-stone-300" />
+                {/* Visual break: decorative divider */}
+                <div className="bg-white py-10 md:py-14 flex flex-col items-center gap-4">
+                  <div className="w-12 h-[2px] bg-stone-300" />
+                  <p className="text-stone-400 text-xs uppercase tracking-[0.3em] font-light">Curated for You</p>
+                  <div className="w-12 h-[2px] bg-stone-300" />
                 </div>
                 
                 {/* Featured Products */}
-                <div className="bg-white py-12 md:py-20 px-4 md:px-6">
+                <div className="bg-white pb-16 md:pb-24 px-4 md:px-6">
                     <div className="flex justify-center mb-8 md:mb-12">
                       <h2 className="bg-black text-white text-xl md:text-2xl font-bold uppercase py-3 px-8 tracking-wider text-center">Featured Products</h2>
                     </div>
@@ -221,6 +222,9 @@ const App: React.FC = () => {
                     </div>
                 </div>
 
+                {/* Trust Stats Bar */}
+                <BenefitsBar />
+
                 {/* Lifestyle Banner */}
                 <LifestyleBanner />
 
@@ -229,17 +233,27 @@ const App: React.FC = () => {
                     <KitchenMixers onNavigate={navigateTo} />
                 </div>
 
+                {/* Visual break between Kitchen & Showers */}
+                <div className="bg-white py-10 md:py-14 flex flex-col items-center gap-3">
+                  <div className="w-16 h-[1px] bg-stone-200" />
+                </div>
+
                 {/* Showers */}
-                <div className="bg-white py-16 md:py-24 px-4 md:px-6">
+                <div className="bg-white pb-16 md:pb-24 px-4 md:px-6">
                     <AdvancedShowers onNavigate={navigateTo} />
                 </div>
 
+                {/* Visual break between Showers & Sinks */}
+                <div className="bg-stone-50 py-10 md:py-14 flex flex-col items-center gap-3">
+                  <div className="w-16 h-[1px] bg-stone-300" />
+                </div>
+
                 {/* Sinks */}
-                <div className="bg-stone-50 py-16 md:py-24 px-4 md:px-6">
+                <div className="bg-stone-50 pb-16 md:pb-24 px-4 md:px-6">
                     <StainlessSteel onNavigate={navigateTo} />
                 </div>
 
-                <div className="bg-white">
+                <div className="bg-white py-8 md:py-12">
                   <SocialReels />
                 </div>
                 <div className="bg-stone-50">
