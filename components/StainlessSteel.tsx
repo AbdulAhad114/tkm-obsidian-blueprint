@@ -13,7 +13,6 @@ const products: Product[] = [
     name: 'Stainless Steel Kitchen Sink Bowl Black',
     category: 'Kitchen Sinks',
     price: 'PKR 10,000.00',
-    // oldPrice: 'PKR 861.00',
     image: 'https://tkmtradingshop.com/cdn/shop/files/WhatsAppImage2026-01-01at1.42.49AM_1.jpg?v=1767260755&width=720',
   },
   {
@@ -47,26 +46,41 @@ export const StainlessSteel: React.FC<Props> = ({ onNavigate }) => {
     <section id="sink-organisers">
       <SectionTitle title="Stainless Steel Sinks" />
       
+      {/* SEO Content Block */}
+      <div className="max-w-3xl mx-auto mb-10 text-center">
+        <p className="text-sm md:text-base text-gray-500 leading-relaxed">
+          Looking for a premium <strong>kitchen sink in Pakistan</strong>? TKM Trading offers an extensive range of imported 
+          <strong> stainless steel sinks</strong> designed for modern Pakistani kitchens. Our sinks are crafted from high-grade 
+          304 stainless steel, ensuring long-lasting durability and resistance to corrosion. Whether you need a single bowl, 
+          double bowl, or undermount sink, we have options to match every kitchen layout. Our competitive 
+          <strong> stainless steel sink prices</strong> make premium quality accessible to every homeowner. As one of Pakistan's 
+          leading suppliers of <strong>modern kitchen fittings</strong>, we also offer a complete range of 
+          <strong> bathroom fittings in Pakistan</strong> — from luxury faucets to rain shower systems. All products come with 
+          free nationwide delivery, a 5-year warranty, and are quality-tested before dispatch. Upgrade your kitchen with 
+          fittings that combine performance, style, and exceptional value.
+        </p>
+      </div>
+      
       {/* Banner */}
       <div 
-        className="w-full h-[300px] md:h-[400px] mb-8 overflow-hidden relative cursor-pointer group"
+        className="w-full h-[300px] md:h-[400px] mb-10 overflow-hidden relative cursor-pointer group"
         onClick={() => onNavigate && onNavigate('collection', 'kitchen-sinks')}
       >
         <img 
           src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1600&q=80" 
-          alt="Stainless Steel Kitchen" 
+          alt="Stainless Steel Kitchen Sinks Collection" 
           className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
          <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
-            <button className="bg-white text-black px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-colors">
+            <button className="bg-white text-tkm-black px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-tkm-teal hover:text-white transition-colors">
                 View Collection
             </button>
         </div>
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-10">
           {products.map(product => (
               <ProductCard key={product.id} product={product} onNavigate={onNavigate} />
           ))}
@@ -75,7 +89,7 @@ export const StainlessSteel: React.FC<Props> = ({ onNavigate }) => {
       <div className="text-center">
          <button 
             onClick={() => onNavigate && onNavigate('collection', 'kitchen-sinks')}
-            className="text-sm font-bold border-b border-black pb-1 uppercase tracking-widest hover:text-tkm-teal hover:border-tkm-teal transition-all"
+            className="text-sm font-bold border-b border-tkm-black pb-1 uppercase tracking-widest hover:text-tkm-teal hover:border-tkm-teal transition-all"
          >
             View All Sinks
          </button>
