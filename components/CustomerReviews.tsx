@@ -11,7 +11,7 @@ const reviews = [
 
 const CustomerReviews: React.FC = () => {
   return (
-    <section className="relative py-[60px] md:py-[100px] overflow-hidden">
+    <section className="relative overflow-hidden">
       <div className="px-6 md:px-12">
         <div className="text-center mb-10">
           <h2 className="font-display text-3xl md:text-[44px] leading-tight text-tkm-black mb-3">

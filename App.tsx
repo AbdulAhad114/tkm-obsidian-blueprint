@@ -164,10 +164,12 @@ const App: React.FC = () => {
             <BenefitsBar />
 
             {/* 3. Brand Authority */}
-            <BrandAuthority />
+            <div className="bg-tkm-light py-16 md:py-24">
+              <BrandAuthority />
+            </div>
 
             {/* 4. Shop By Category */}
-            <div className="bg-tkm-gray py-[60px] md:py-[100px]">
+            <div className="bg-tkm-gray py-16 md:py-24">
               <ShopByArea onNavigate={navigateTo} />
             </div>
 
@@ -175,46 +177,47 @@ const App: React.FC = () => {
             <LifestyleBreak onNavigate={navigateTo} />
 
             {/* 6. Featured Products */}
-            <div className="bg-tkm-light py-[60px] md:py-[100px] px-4 md:px-6">
+            <div className="bg-tkm-light py-16 md:py-24 px-6 md:px-12">
               <div className="text-center mb-10 md:mb-14">
                 <h2 className="font-display text-3xl md:text-[40px] leading-tight text-tkm-black mb-3">Featured Products</h2>
                 <div className="w-12 h-[2px] bg-tkm-brass mx-auto" />
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-6xl mx-auto">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 max-w-6xl mx-auto">
                 {realProducts.slice(0, 4).map(p => (
                   <ProductCard key={p.id} product={p} onAddToCart={addToCart} onQuickView={setQuickViewProduct} onNavigate={navigateTo} />
                 ))}
               </div>
             </div>
 
-
-            {/* 8. Premium Kitchen Faucets */}
-            <div className="bg-tkm-light py-[60px] md:py-[100px] px-4 md:px-6">
+            {/* 7. Premium Kitchen Faucets */}
+            <div className="bg-tkm-gray py-16 md:py-24 px-6 md:px-12">
               <KitchenMixers onNavigate={navigateTo} />
             </div>
 
-            {/* 9. Lifestyle Break #2 */}
+            {/* 8. Lifestyle Break #2 */}
             <LifestyleBreak2 onNavigate={navigateTo} />
 
-            {/* 10. Advanced Shower Systems */}
-            <div className="bg-tkm-light py-[60px] md:py-[100px] px-4 md:px-6">
+            {/* 9. Advanced Shower Systems */}
+            <div className="bg-tkm-light py-16 md:py-24 px-6 md:px-12">
               <AdvancedShowers onNavigate={navigateTo} />
             </div>
 
-            {/* 11. Stainless Steel Sinks */}
-            <div className="bg-tkm-gray py-[60px] md:py-[100px] px-4 md:px-6">
+            {/* 10. Stainless Steel Sinks */}
+            <div className="bg-tkm-gray py-16 md:py-24 px-6 md:px-12">
               <StainlessSteel onNavigate={navigateTo} />
             </div>
 
-            {/* 12. Customer Reviews */}
-            <div className="bg-tkm-light">
+            {/* 11. Customer Reviews */}
+            <div className="bg-tkm-light py-16 md:py-24">
               <CustomerReviews />
             </div>
 
-            {/* 13. FAQ */}
-            <FaqSection />
+            {/* 12. FAQ */}
+            <div className="bg-tkm-gray">
+              <FaqSection />
+            </div>
 
-            {/* 14. Final CTA */}
+            {/* 13. Final CTA */}
             <BottomBanner onNavigate={navigateTo} />
           </div>
         )}
