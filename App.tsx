@@ -5,7 +5,7 @@ import { BenefitsBar } from './components/BenefitsBar';
 import { BrandAuthority } from './components/BrandAuthority';
 import { ShopByArea } from './components/ShopByArea';
 import { LifestyleBreak } from './components/LifestyleBreak';
-import { WhyChooseTKM } from './components/WhyChooseTKM';
+
 import { AdvancedShowers } from './components/AdvancedShowers';
 import { KitchenMixers } from './components/KitchenMixers';
 import { StainlessSteel } from './components/StainlessSteel';
@@ -187,8 +187,6 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            {/* 7. Why Choose TKM */}
-            <WhyChooseTKM />
 
             {/* 8. Premium Kitchen Faucets */}
             <div className="bg-tkm-light py-[60px] md:py-[100px] px-4 md:px-6">
