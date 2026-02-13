@@ -39,7 +39,7 @@ const FaqSection: React.FC<FaqProps> = ({ onNavigate }) => {
   }, []);
 
   return (
-    <section id="faq" className="py-[60px] md:py-[100px] px-6 md:px-12 bg-tkm-light">
+    <section id="faq" className="py-16 md:py-24 px-6 md:px-12">
       <div className="w-full max-w-4xl mx-auto">
         <div className="text-center mb-10">
           <h2 className="font-display text-3xl md:text-[44px] leading-tight text-tkm-black mb-3">

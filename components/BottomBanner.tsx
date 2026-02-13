@@ -8,7 +8,7 @@ interface Props {
 
 export const BottomBanner: React.FC<Props> = ({ onNavigate }) => {
   return (
-    <section className="bg-tkm-teal py-[60px] md:py-[120px]">
+    <section className="bg-tkm-teal py-16 md:py-24">
       <div className="max-w-3xl mx-auto text-center px-6">
         <h2 className="font-display text-3xl md:text-5xl text-white mb-6 leading-tight">
           Upgrade Your Space Today

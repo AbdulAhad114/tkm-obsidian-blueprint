@@ -21,7 +21,7 @@ const values = [
 
 export const BrandAuthority: React.FC = () => {
   return (
-    <section className="bg-tkm-light py-[60px] md:py-[100px] px-6 md:px-12">
+    <section className="px-6 md:px-12">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="font-display text-3xl md:text-[44px] leading-tight text-tkm-black mb-4">
           Designed for Modern Pakistani Homes
