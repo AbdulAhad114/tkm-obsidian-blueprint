@@ -1,5 +1,5 @@
-import React from "react";
-import ReviewsCarousel from "../components/ReviewsCarousel";
+import React, { useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 
 const reviews = [
   { name: "Majid Ali", text: "Simple, stylish, and reliable. The quality is good, the finish looks clean, and everything works as expected." },
@@ -10,6 +10,8 @@ const reviews = [
 ];
 
 const CustomerReviews: React.FC = () => {
+  const [emblaRef] = useEmblaCarousel({ loop: true, align: "start" });
+
   return (
     <section className="relative overflow-hidden">
       <div className="px-6 md:px-12">
@@ -30,10 +32,10 @@ const CustomerReviews: React.FC = () => {
         </div>
       </div>
 
-      <div className="px-6 md:px-12">
-        <ReviewsCarousel>
+      <div className="overflow-hidden px-6 md:px-12" ref={emblaRef}>
+        <div className="flex gap-4">
           {reviews.map((review, index) => (
-            <div key={index} className="min-w-full sm:min-w-[50%] lg:min-w-[25%]">
+            <div key={index} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%]">
               <div className="h-[280px] bg-white border border-gray-100 rounded-xl p-8 flex flex-col justify-between shadow-sm">
                 <div className="text-sm tracking-wide text-tkm-brass">★★★★★</div>
                 <p className="text-tkm-black text-sm leading-relaxed">"{review.text}"</p>
@@ -41,7 +43,7 @@ const CustomerReviews: React.FC = () => {
               </div>
             </div>
           ))}
-        </ReviewsCarousel>
+        </div>
       </div>
     </section>
   );
