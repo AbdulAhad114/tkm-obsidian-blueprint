@@ -28,6 +28,7 @@ import { Product, CartItem, ViewType } from './types';
 import { fetchShopifyProducts, createCheckout } from './lib/shopify';
 import CustomerReviews from './components/CustomerReviews';
 import FaqSection from './components/FaqSection';
+import { FadeInSection } from './components/common/FadeInSection';
 
 const App: React.FC = () => {
   const [view, setView] = useState<ViewType>('home');
@@ -161,23 +162,27 @@ const App: React.FC = () => {
             <Hero onNavigate={navigateTo} />
 
             {/* 2. Trust Bar */}
-            <BenefitsBar />
+            <FadeInSection>
+              <BenefitsBar />
+            </FadeInSection>
 
             {/* 3. Brand Authority */}
-            <div className="bg-tkm-light py-16 md:py-24">
+            <FadeInSection className="bg-tkm-light py-16 md:py-24">
               <BrandAuthority />
-            </div>
+            </FadeInSection>
 
             {/* 4. Shop By Category */}
-            <div className="bg-tkm-gray py-16 md:py-24">
+            <FadeInSection className="bg-tkm-gray py-16 md:py-24">
               <ShopByArea onNavigate={navigateTo} />
-            </div>
+            </FadeInSection>
 
             {/* 5. Lifestyle Break */}
-            <LifestyleBreak onNavigate={navigateTo} />
+            <FadeInSection>
+              <LifestyleBreak onNavigate={navigateTo} />
+            </FadeInSection>
 
             {/* 6. Featured Products */}
-            <div className="bg-tkm-light py-16 md:py-24 px-6 md:px-12">
+            <FadeInSection className="bg-tkm-light py-16 md:py-24 px-6 md:px-12">
               <div className="text-center mb-10 md:mb-14">
                 <h2 className="font-display text-3xl md:text-[40px] leading-tight text-tkm-black mb-3">Featured Products</h2>
                 <div className="w-12 h-[2px] bg-tkm-brass mx-auto" />
@@ -187,38 +192,42 @@ const App: React.FC = () => {
                   <ProductCard key={p.id} product={p} onAddToCart={addToCart} onQuickView={setQuickViewProduct} onNavigate={navigateTo} />
                 ))}
               </div>
-            </div>
+            </FadeInSection>
 
             {/* 7. Premium Kitchen Faucets */}
-            <div className="bg-tkm-gray py-16 md:py-24 px-6 md:px-12">
+            <FadeInSection className="bg-tkm-gray py-16 md:py-24 px-6 md:px-12">
               <KitchenMixers onNavigate={navigateTo} />
-            </div>
+            </FadeInSection>
 
             {/* 8. Lifestyle Break #2 */}
-            <LifestyleBreak2 onNavigate={navigateTo} />
+            <FadeInSection>
+              <LifestyleBreak2 onNavigate={navigateTo} />
+            </FadeInSection>
 
             {/* 9. Advanced Shower Systems */}
-            <div className="bg-tkm-light py-16 md:py-24 px-6 md:px-12">
+            <FadeInSection className="bg-tkm-light py-16 md:py-24 px-6 md:px-12">
               <AdvancedShowers onNavigate={navigateTo} />
-            </div>
+            </FadeInSection>
 
             {/* 10. Stainless Steel Sinks */}
-            <div className="bg-tkm-gray py-16 md:py-24 px-6 md:px-12">
+            <FadeInSection className="bg-tkm-gray py-16 md:py-24 px-6 md:px-12">
               <StainlessSteel onNavigate={navigateTo} />
-            </div>
+            </FadeInSection>
 
             {/* 11. Customer Reviews */}
-            <div className="bg-tkm-light py-16 md:py-24">
+            <FadeInSection className="bg-tkm-light py-16 md:py-24">
               <CustomerReviews />
-            </div>
+            </FadeInSection>
 
             {/* 12. FAQ */}
-            <div className="bg-tkm-gray">
+            <FadeInSection className="bg-tkm-gray">
               <FaqSection />
-            </div>
+            </FadeInSection>
 
             {/* 13. Final CTA */}
-            <BottomBanner onNavigate={navigateTo} />
+            <FadeInSection>
+              <BottomBanner onNavigate={navigateTo} />
+            </FadeInSection>
           </div>
         )}
         

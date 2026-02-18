@@ -49,15 +49,7 @@ export const StainlessSteel: React.FC<Props> = ({ onNavigate }) => {
       {/* SEO Content Block */}
       <div className="max-w-3xl mx-auto mb-10 text-center">
         <p className="text-sm md:text-base text-gray-500 leading-relaxed">
-          Looking for a premium <strong>kitchen sink in Pakistan</strong>? TKM Trading offers an extensive range of imported 
-          <strong> stainless steel sinks</strong> designed for modern Pakistani kitchens. Our sinks are crafted from high-grade 
-          304 stainless steel, ensuring long-lasting durability and resistance to corrosion. Whether you need a single bowl, 
-          double bowl, or undermount sink, we have options to match every kitchen layout. Our competitive 
-          <strong> stainless steel sink prices</strong> make premium quality accessible to every homeowner. As one of Pakistan's 
-          leading suppliers of <strong>modern kitchen fittings</strong>, we also offer a complete range of 
-          <strong> bathroom fittings in Pakistan</strong> — from luxury faucets to rain shower systems. All products come with 
-          free nationwide delivery, a 5-year warranty, and are quality-tested before dispatch. Upgrade your kitchen with 
-          fittings that combine performance, style, and exceptional value.
+          Upgrade your kitchen with TKM Trading's premium <strong>stainless steel sinks</strong> — crafted from high-grade 304 steel for lasting durability and corrosion resistance. Choose from single bowl, double bowl, or undermount styles at <strong>competitive prices in Pakistan</strong>. All orders include free nationwide delivery and a 5-year warranty.
         </p>
       </div>
       
