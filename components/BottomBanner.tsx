@@ -8,20 +8,19 @@ interface Props {
 
 export const BottomBanner: React.FC<Props> = ({ onNavigate }) => {
   return (
-    <section className="bg-tkm-teal py-16 md:py-24">
+    <section className="bg-tkm-black py-16 md:py-24">
       <div className="max-w-3xl mx-auto text-center px-6">
-        <h2 className="font-display text-3xl md:text-5xl text-white mb-6 leading-tight">
+        <h2 className="font-display text-3xl md:text-5xl text-white mb-5 leading-tight">
           Upgrade Your Space Today
         </h2>
-        <div className="w-12 h-[2px] bg-tkm-brass mx-auto mb-8" />
-        <p className="text-white/70 text-sm md:text-base mb-10 max-w-lg mx-auto">
+        <p className="text-white/60 text-sm md:text-base mb-8 max-w-lg mx-auto">
           Transform your home with premium imported fittings. Free delivery across Pakistan.
         </p>
         <button
           onClick={() => onNavigate && onNavigate('collection', 'featured-products')}
-          className="bg-white text-tkm-black px-10 py-4 uppercase text-xs font-bold tracking-[0.2em] hover:bg-tkm-brass hover:text-white transition-all duration-300 inline-flex items-center gap-2"
+          className="bg-tkm-teal text-white px-10 py-4 rounded-md text-sm font-bold hover:bg-tkm-hover transition-all duration-300 inline-flex items-center gap-2"
         >
-          Shop Now <ArrowRight size={14} />
+          Shop Now <ArrowRight size={16} />
         </button>
       </div>
     </section>

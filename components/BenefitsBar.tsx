@@ -1,39 +1,27 @@
 import React from 'react';
-import { Truck, ShieldCheck, Lock, CheckCircle } from 'lucide-react';
+import { Truck, ShieldCheck, Wrench, MessageCircle } from 'lucide-react';
+
+const benefits = [
+  { icon: Truck, title: 'Fast Nationwide Delivery', desc: 'Karachi, Lahore, Islamabad & more', color: 'text-tkm-teal' },
+  { icon: ShieldCheck, title: '100% Genuine Products', desc: 'Directly imported, quality verified', color: 'text-tkm-teal' },
+  { icon: Wrench, title: 'Expert Installation Support', desc: 'Guidance on every purchase', color: 'text-tkm-teal' },
+  { icon: MessageCircle, title: 'Dedicated Customer Care', desc: 'WhatsApp & call support', color: 'text-tkm-teal' },
+];
 
 export const BenefitsBar: React.FC = () => {
   return (
-    <section className="bg-tkm-teal text-white py-6 md:py-8 border-t border-white/10">
-      <div className="container mx-auto px-4">
+    <section className="bg-white py-8 md:py-10 border-y border-gray-100">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-          <div className="flex items-center gap-3 justify-center md:justify-start">
-            <Truck size={28} className="flex-shrink-0 opacity-80" />
-            <div className="text-left">
-              <h4 className="font-bold text-xs uppercase tracking-wider">Nationwide Delivery</h4>
-              <p className="text-[10px] opacity-70">Free across all Pakistan</p>
+          {benefits.map((b, i) => (
+            <div key={i} className="flex items-start gap-3 pl-4 border-l-2 border-tkm-teal">
+              <b.icon size={24} className={`${b.color} flex-shrink-0 mt-0.5`} strokeWidth={1.5} />
+              <div>
+                <h4 className="font-bold text-sm text-tkm-black">{b.title}</h4>
+                <p className="text-xs text-tkm-body mt-0.5">{b.desc}</p>
+              </div>
             </div>
-          </div>
-          <div className="flex items-center gap-3 justify-center md:justify-start">
-            <ShieldCheck size={28} className="flex-shrink-0 opacity-80" />
-            <div className="text-left">
-              <h4 className="font-bold text-xs uppercase tracking-wider">5-Year Warranty</h4>
-              <p className="text-[10px] opacity-70">On all products</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 justify-center md:justify-start">
-            <Lock size={28} className="flex-shrink-0 opacity-80" />
-            <div className="text-left">
-              <h4 className="font-bold text-xs uppercase tracking-wider">Secure Payments</h4>
-              <p className="text-[10px] opacity-70">COD & bank transfer</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 justify-center md:justify-start">
-            <CheckCircle size={28} className="flex-shrink-0 opacity-80" />
-            <div className="text-left">
-              <h4 className="font-bold text-xs uppercase tracking-wider">Quality Tested</h4>
-              <p className="text-[10px] opacity-70">Every product inspected</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

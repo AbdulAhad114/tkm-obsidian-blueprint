@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { AnnouncementBar } from './components/AnnouncementBar';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { BenefitsBar } from './components/BenefitsBar';
-import { BrandAuthority } from './components/BrandAuthority';
 import { ShopByArea } from './components/ShopByArea';
-import { LifestyleBreak } from './components/LifestyleBreak';
-
-import { AdvancedShowers } from './components/AdvancedShowers';
+import { FlashSale } from './components/FlashSale';
 import { KitchenMixers } from './components/KitchenMixers';
+import { AdvancedShowers } from './components/AdvancedShowers';
 import { StainlessSteel } from './components/StainlessSteel';
-import { LifestyleBreak2 } from './components/LifestyleBreak2';
-import SocialReels from './components/SocialReels';
+import { WhyChooseTKM } from './components/WhyChooseTKM';
+import { InstagramFeed } from './components/InstagramFeed';
+import { NewsletterBanner } from './components/NewsletterBanner';
 import { BottomBanner } from './components/BottomBanner';
 import { Footer } from './components/Footer';
 import { GeminiAssistant } from './components/GeminiAssistant';
@@ -29,6 +29,7 @@ import { fetchShopifyProducts, createCheckout } from './lib/shopify';
 import CustomerReviews from './components/CustomerReviews';
 import FaqSection from './components/FaqSection';
 import { FadeInSection } from './components/common/FadeInSection';
+import { MessageCircle } from 'lucide-react';
 
 const App: React.FC = () => {
   const [view, setView] = useState<ViewType>('home');
@@ -38,6 +39,7 @@ const App: React.FC = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
+  const [featuredFilter, setFeaturedFilter] = useState('All');
 
   useEffect(() => {
     const initShopify = async () => {
@@ -95,6 +97,12 @@ const App: React.FC = () => {
     ? realProducts.filter(p => p.category === currentProduct.category && p.id !== currentProduct.id).slice(0, 4)
     : [];
 
+  // Filter featured products
+  const filterTabs = ['All', 'Kitchen', 'Bathroom', 'Showers', 'Sinks'];
+  const filteredProducts = featuredFilter === 'All' 
+    ? realProducts.slice(0, 8) 
+    : realProducts.filter(p => p.category?.toLowerCase().includes(featuredFilter.toLowerCase())).slice(0, 8);
+
   let seoTitle = 'TKM Trading Shop | Premium Sanitaryware & Kitchen Faucets Pakistan';
   let seoDescription = 'Premium bathroom fittings and kitchen faucets in Pakistan. TKM Trading offers imported sanitaryware, rain showers, sinks and accessories with free nationwide delivery.';
   let seoImage = 'https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=2868&auto=format&fit=crop';
@@ -103,7 +111,7 @@ const App: React.FC = () => {
 
   if (view === 'product' && currentProduct) {
     seoTitle = `${currentProduct.name} | TKM Trading Shop`;
-    seoDescription = `Buy ${currentProduct.name} at best price in Pakistan. ${currentProduct.category} - Free Delivery. ${currentProduct.features ? currentProduct.features[0] : ''}`;
+    seoDescription = `Buy ${currentProduct.name} at best price in Pakistan. ${currentProduct.category} - Free Delivery.`;
     seoImage = currentProduct.image;
     seoType = 'product';
     const priceValue = currentProduct.price.replace(/[^0-9.]/g, '');
@@ -139,96 +147,136 @@ const App: React.FC = () => {
   }
 
   if (loading) {
-    return <div className="min-h-screen flex items-center justify-center bg-tkm-light"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-tkm-teal"></div></div>;
+    return <div className="min-h-screen flex items-center justify-center bg-white"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-tkm-teal"></div></div>;
   }
 
   return (
-    <div className="min-h-screen flex flex-col font-sans bg-tkm-light">
+    <div className="min-h-screen flex flex-col font-sans bg-white">
       <SEOHead 
         title={seoTitle} description={seoDescription} ogImage={seoImage}
         ogType={seoType} jsonLd={schema} canonicalUrl={window.location.href}
       />
 
+      {/* 1. Announcement Bar */}
+      <AnnouncementBar />
+
+      {/* 2. Header */}
       <Header 
         onNavigate={navigateTo} 
         cartCount={cart.reduce((a, c) => a + c.quantity, 0)}
         onOpenCart={() => setIsCartOpen(true)}
       />
       
-      <main className="flex-grow w-full mx-auto">
+      <main className="flex-grow w-full">
         {view === 'home' && (
-          <div className="w-full max-w-[1920px] mx-auto">
-            {/* 1. Hero */}
+          <>
+            {/* 3. Hero */}
             <Hero onNavigate={navigateTo} />
 
-            {/* 2. Trust Bar */}
+            {/* 4. Trust / USP Bar */}
             <FadeInSection>
               <BenefitsBar />
             </FadeInSection>
 
-            {/* 3. Brand Authority */}
-            <FadeInSection className="bg-tkm-light py-16 md:py-24">
-              <BrandAuthority />
-            </FadeInSection>
-
-            {/* 4. Shop By Category */}
-            <FadeInSection className="bg-tkm-gray py-16 md:py-24">
+            {/* 5. Shop By Category */}
+            <FadeInSection>
               <ShopByArea onNavigate={navigateTo} />
             </FadeInSection>
 
-            {/* 5. Lifestyle Break */}
-            <FadeInSection>
-              <LifestyleBreak onNavigate={navigateTo} />
-            </FadeInSection>
-
             {/* 6. Featured Products */}
-            <FadeInSection className="bg-tkm-light py-16 md:py-24 px-6 md:px-12">
-              <div className="text-center mb-10 md:mb-14">
-                <h2 className="font-display text-3xl md:text-[40px] leading-tight text-tkm-black mb-3">Featured Products</h2>
-                <div className="w-12 h-[2px] bg-tkm-brass mx-auto" />
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 max-w-6xl mx-auto">
-                {realProducts.slice(0, 4).map(p => (
-                  <ProductCard key={p.id} product={p} onAddToCart={addToCart} onQuickView={setQuickViewProduct} onNavigate={navigateTo} />
-                ))}
-              </div>
-            </FadeInSection>
-
-            {/* 7. Premium Kitchen Faucets */}
-            <FadeInSection className="bg-tkm-gray py-16 md:py-24 px-6 md:px-12">
-              <KitchenMixers onNavigate={navigateTo} />
-            </FadeInSection>
-
-            {/* 8. Lifestyle Break #2 */}
             <FadeInSection>
-              <LifestyleBreak2 onNavigate={navigateTo} />
+              <section className="py-12 md:py-20 px-6 md:px-12 bg-tkm-gray">
+                <div className="max-w-7xl mx-auto">
+                  <div className="text-center mb-8">
+                    <span className="text-tkm-teal text-xs uppercase tracking-[0.2em] font-semibold">Hand-Picked</span>
+                    <h2 className="font-display text-3xl md:text-4xl text-tkm-black mt-2 mb-2">Featured Products</h2>
+                    <p className="text-sm text-tkm-body">Top-selling imported fittings loved by Pakistani homeowners</p>
+                    <div className="w-12 h-[2px] bg-tkm-brass mx-auto mt-4" />
+                  </div>
+
+                  {/* Filter Tabs */}
+                  <div className="flex flex-wrap justify-center gap-2 mb-8">
+                    {filterTabs.map(tab => (
+                      <button
+                        key={tab}
+                        onClick={() => setFeaturedFilter(tab)}
+                        className={`px-5 py-2 rounded-full text-xs font-bold transition-colors ${
+                          featuredFilter === tab 
+                            ? 'bg-tkm-teal text-white' 
+                            : 'bg-white text-tkm-body hover:bg-tkm-teal/10'
+                        }`}
+                      >
+                        {tab}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                    {(filteredProducts.length > 0 ? filteredProducts : realProducts.slice(0, 8)).map(p => (
+                      <ProductCard key={p.id} product={p} onAddToCart={addToCart} onQuickView={setQuickViewProduct} onNavigate={navigateTo} />
+                    ))}
+                  </div>
+
+                  <div className="text-center mt-10">
+                    <button 
+                      onClick={() => navigateTo('collection', 'featured-products')}
+                      className="border-2 border-tkm-teal text-tkm-teal px-8 py-3 rounded-md text-sm font-bold hover:bg-tkm-teal hover:text-white transition-all"
+                    >
+                      View All Products
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </FadeInSection>
+
+            {/* 7. Flash Sale */}
+            <FadeInSection>
+              <FlashSale onNavigate={navigateTo} onAddToCart={addToCart} onQuickView={setQuickViewProduct} products={realProducts} />
+            </FadeInSection>
+
+            {/* 8. Premium Kitchen Faucets */}
+            <FadeInSection>
+              <KitchenMixers onNavigate={navigateTo} onAddToCart={addToCart} onQuickView={setQuickViewProduct} />
             </FadeInSection>
 
             {/* 9. Advanced Shower Systems */}
-            <FadeInSection className="bg-tkm-light py-16 md:py-24 px-6 md:px-12">
+            <FadeInSection>
               <AdvancedShowers onNavigate={navigateTo} />
             </FadeInSection>
 
             {/* 10. Stainless Steel Sinks */}
-            <FadeInSection className="bg-tkm-gray py-16 md:py-24 px-6 md:px-12">
-              <StainlessSteel onNavigate={navigateTo} />
+            <FadeInSection>
+              <StainlessSteel onNavigate={navigateTo} onAddToCart={addToCart} onQuickView={setQuickViewProduct} />
             </FadeInSection>
 
-            {/* 11. Customer Reviews */}
-            <FadeInSection className="bg-tkm-light py-16 md:py-24">
+            {/* 11. Why Choose Us */}
+            <FadeInSection>
+              <WhyChooseTKM />
+            </FadeInSection>
+
+            {/* 12. Customer Testimonials */}
+            <FadeInSection>
               <CustomerReviews />
             </FadeInSection>
 
-            {/* 12. FAQ */}
-            <FadeInSection className="bg-tkm-gray">
+            {/* 13. Instagram Feed */}
+            <FadeInSection>
+              <InstagramFeed />
+            </FadeInSection>
+
+            {/* 14. FAQ */}
+            <FadeInSection>
               <FaqSection />
             </FadeInSection>
 
-            {/* 13. Final CTA */}
+            {/* 15. Newsletter */}
             <FadeInSection>
-              <BottomBanner onNavigate={navigateTo} />
+              <NewsletterBanner />
             </FadeInSection>
-          </div>
+
+            {/* 16. Final CTA */}
+            <BottomBanner onNavigate={navigateTo} />
+          </>
         )}
         
         {view === 'complaint' && <ComplaintForm />}
@@ -251,6 +299,18 @@ const App: React.FC = () => {
         product={quickViewProduct} onClose={() => setQuickViewProduct(null)}
         onAddToCart={addToCart} onViewDetails={(p) => navigateTo('product', p.id)}
       />
+
+      {/* WhatsApp FAB */}
+      <a
+        href="https://wa.me/923001234567"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors hover:scale-110 transform"
+        aria-label="Chat on WhatsApp"
+      >
+        <MessageCircle size={28} />
+      </a>
+
       <GeminiAssistant />
     </div>
   );
