@@ -1,119 +1,71 @@
-import React from 'react';
-import { SectionTitle } from './common/SectionTitle';
+import React, { useRef } from 'react';
 import { ViewType } from '../types';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ShopByAreaProps {
   onNavigate?: (view: ViewType, id?: string) => void;
 }
 
-const BathroomFaucetIcon = () => (
-  <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-20 h-20 md:w-24 md:h-24">
-    <path d="M40 12 C40 12 40 35 40 35" strokeLinecap="round"/>
-    <path d="M30 35 L50 35" strokeLinecap="round"/>
-    <path d="M50 35 C55 35 58 38 58 43 L58 48" strokeLinecap="round"/>
-    <ellipse cx="40" cy="60" rx="18" ry="8" />
-    <path d="M22 60 L22 55 C22 50 28 46 40 46 C52 46 58 50 58 55 L58 60" />
-    <circle cx="40" cy="18" r="3" fill="currentColor" className="text-tkm-brass" stroke="none"/>
-  </svg>
-);
-
-const WallShowerIcon = () => (
-  <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-20 h-20 md:w-24 md:h-24">
-    <rect x="30" y="8" width="20" height="8" rx="2"/>
-    <path d="M40 16 L40 28"/>
-    <circle cx="40" cy="32" r="12"/>
-    <line x1="34" y1="44" x2="34" y2="52" className="text-tkm-brass" strokeLinecap="round"/>
-    <line x1="40" y1="44" x2="40" y2="55" className="text-tkm-brass" strokeLinecap="round"/>
-    <line x1="46" y1="44" x2="46" y2="52" className="text-tkm-brass" strokeLinecap="round"/>
-    <line x1="37" y1="44" x2="37" y2="50" className="text-tkm-brass" strokeLinecap="round"/>
-    <line x1="43" y1="44" x2="43" y2="50" className="text-tkm-brass" strokeLinecap="round"/>
-    <line x1="31" y1="44" x2="31" y2="48" className="text-tkm-brass" strokeLinecap="round"/>
-    <line x1="49" y1="44" x2="49" y2="48" className="text-tkm-brass" strokeLinecap="round"/>
-  </svg>
-);
-
-const HandShowerIcon = () => (
-  <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-20 h-20 md:w-24 md:h-24">
-    <ellipse cx="40" cy="14" rx="8" ry="5"/>
-    <line x1="36" y1="19" x2="36" y2="24" className="text-tkm-brass" strokeLinecap="round"/>
-    <line x1="40" y1="19" x2="40" y2="26" className="text-tkm-brass" strokeLinecap="round"/>
-    <line x1="44" y1="19" x2="44" y2="24" className="text-tkm-brass" strokeLinecap="round"/>
-    <path d="M40 9 L40 5 C40 3 42 3 42 5 L42 30 C42 34 38 34 38 30 L38 20"/>
-    <path d="M42 30 C42 40 44 50 40 65" strokeLinecap="round"/>
-    <path d="M40 65 C38 68 36 68 36 65 C36 60 38 55 38 50" strokeLinecap="round"/>
-  </svg>
-);
-
-const KitchenFaucetIcon = () => (
-  <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-20 h-20 md:w-24 md:h-24">
-    <path d="M25 60 L55 60" strokeLinecap="round"/>
-    <path d="M28 60 L28 45 C28 40 32 38 36 38 L36 20"/>
-    <path d="M36 20 C36 16 40 14 44 16" strokeLinecap="round"/>
-    <path d="M44 16 L44 38 C48 38 52 40 52 45 L52 60"/>
-    <circle cx="36" cy="16" r="2" fill="currentColor" className="text-tkm-brass" stroke="none"/>
-    <path d="M44 42 L44 50" className="text-tkm-brass" strokeLinecap="round" strokeDasharray="2 3"/>
-    <path d="M20 60 L20 68 L60 68 L60 60"/>
-  </svg>
-);
-
-const KitchenSinkIcon = () => (
-  <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-20 h-20 md:w-24 md:h-24">
-    <rect x="12" y="24" width="56" height="32" rx="4"/>
-    <line x1="40" y1="24" x2="40" y2="56"/>
-    <circle cx="28" cy="48" r="3" className="text-tkm-brass"/>
-    <circle cx="52" cy="48" r="3" className="text-tkm-brass"/>
-    <path d="M12 56 L8 68 L72 68 L68 56"/>
-    <path d="M35 16 L35 24" strokeLinecap="round"/>
-    <path d="M35 16 L50 16 L50 24" strokeLinecap="round"/>
-  </svg>
-);
-
-const KitchenAccessoriesIcon = () => (
-  <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-20 h-20 md:w-24 md:h-24">
-    <rect x="15" y="20" width="50" height="40" rx="3"/>
-    <line x1="15" y1="35" x2="65" y2="35"/>
-    <line x1="35" y1="35" x2="35" y2="60"/>
-    <rect x="20" y="25" width="12" height="6" rx="1" className="text-tkm-brass"/>
-    <circle cx="50" cy="28" r="3" className="text-tkm-brass"/>
-    <rect x="20" y="40" width="10" height="12" rx="1"/>
-    <rect x="40" y="40" width="20" height="12" rx="1"/>
-    <path d="M30 16 L30 20" strokeLinecap="round"/>
-    <line x1="50" y1="16" x2="50" y2="20" strokeLinecap="round"/>
-  </svg>
-);
-
 const categories = [
-  { title: 'Bathroom Faucets', icon: BathroomFaucetIcon, link: 'bathroom-faucets-imported' },
-  { title: 'Wall Showers', icon: WallShowerIcon, link: 'bathroom-wall-mounted-showers-imported' },
-  { title: 'Hand Showers', icon: HandShowerIcon, link: 'bathroom-hand-showers-imported' },
-  { title: 'Kitchen Faucets', icon: KitchenFaucetIcon, link: 'kitchen-faucets-imported' },
-  { title: 'Kitchen Sinks', icon: KitchenSinkIcon, link: 'kitchen-sinks' },
-  { title: 'Kitchen Accessories', icon: KitchenAccessoriesIcon, link: 'kitchen-accessories' }
+  { title: 'Kitchen Faucets', count: 18, link: 'kitchen-faucets-imported', image: 'https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&w=400&q=80' },
+  { title: 'Shower Systems', count: 24, link: 'bathroom-wall-mounted-showers-imported', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=400&q=80' },
+  { title: 'Stainless Sinks', count: 12, link: 'kitchen-sinks', image: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?auto=format&fit=crop&w=400&q=80' },
+  { title: 'Bathroom Fittings', count: 30, link: 'bathroom-faucets-imported', image: 'https://images.unsplash.com/photo-1584622050111-993a426fbf0a?auto=format&fit=crop&w=400&q=80' },
+  { title: 'Accessories', count: 15, link: 'kitchen-accessories', image: 'https://images.unsplash.com/photo-1585913217436-3e2a5d5e533c?auto=format&fit=crop&w=400&q=80' },
+  { title: 'Basin Mixers', count: 20, link: 'bathroom-faucets-imported', image: 'https://images.unsplash.com/photo-1520032525096-7bd04a94b568?auto=format&fit=crop&w=400&q=80' },
+  { title: 'Water Filters', count: 8, link: 'kitchen-accessories', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80' },
 ];
 
 export const ShopByArea: React.FC<ShopByAreaProps> = ({ onNavigate }) => {
-  const handleClick = (id: string) => {
-    if (onNavigate) onNavigate('collection', id);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: 'left' | 'right') => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: dir === 'left' ? -280 : 280, behavior: 'smooth' });
+    }
   };
 
   return (
-    <section className="w-full px-4 md:px-6">
-      <SectionTitle title="Shop By Category" />
-      <div className="grid grid-cols-3 md:grid-cols-6 gap-6 md:gap-8 max-w-6xl mx-auto">
-        {categories.map((cat, idx) => (
-          <div
-            key={idx}
-            onClick={() => handleClick(cat.link)}
-            className="flex flex-col items-center group cursor-pointer py-8 px-3 rounded-2xl hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
-          >
-            <div className="text-gray-600 group-hover:text-tkm-teal transition-colors duration-300 mb-4">
-              <cat.icon />
-            </div>
-            <h3 className="text-[11px] md:text-xs font-bold uppercase tracking-widest text-center text-gray-500 group-hover:text-tkm-teal transition-colors">
-              {cat.title}
-            </h3>
+    <section className="py-12 md:py-20 px-6 md:px-12 bg-white">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-10">
+          <span className="text-tkm-teal text-xs uppercase tracking-[0.2em] font-semibold">Browse</span>
+          <h2 className="font-display text-3xl md:text-4xl text-tkm-black mt-2 mb-3">Shop By Category</h2>
+          <div className="w-12 h-[2px] bg-tkm-brass mx-auto" />
+        </div>
+
+        <div className="relative">
+          <button onClick={() => scroll('left')} className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full w-10 h-10 items-center justify-center hover:bg-tkm-gray transition-colors">
+            <ChevronLeft size={20} />
+          </button>
+          <button onClick={() => scroll('right')} className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full w-10 h-10 items-center justify-center hover:bg-tkm-gray transition-colors">
+            <ChevronRight size={20} />
+          </button>
+
+          <div ref={scrollRef} className="flex gap-4 md:gap-5 overflow-x-auto scrollbar-hide pb-4 snap-x snap-mandatory">
+            {categories.map((cat, idx) => (
+              <div
+                key={idx}
+                onClick={() => onNavigate && onNavigate('collection', cat.link)}
+                className="flex-shrink-0 w-[45%] md:w-[180px] cursor-pointer group snap-start"
+              >
+                <div className="relative aspect-square rounded-2xl overflow-hidden mb-3 bg-tkm-gray">
+                  <img 
+                    src={cat.image} 
+                    alt={cat.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-tkm-teal/0 group-hover:bg-tkm-teal/60 transition-colors duration-300" />
+                </div>
+                <h3 className="text-sm font-bold text-tkm-black group-hover:text-tkm-teal transition-colors text-center">
+                  {cat.title}
+                </h3>
+                <p className="text-xs text-tkm-teal text-center mt-0.5">{cat.count} Products</p>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );
