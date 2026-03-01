@@ -12,21 +12,20 @@ const images = [
 
 export const InstagramFeed: React.FC = () => {
   return (
-    <section className="py-12 md:py-20 px-6 md:px-12 bg-white">
+    <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10">
-          <span className="text-tkm-teal text-xs uppercase tracking-[0.2em] font-semibold">Social</span>
-          <h2 className="font-display text-3xl md:text-4xl text-tkm-black mt-2 mb-2">Follow Our Journey</h2>
+          <h2 className="font-display text-3xl md:text-[42px] text-tkm-navy mb-2">Follow Our Journey</h2>
           <p className="text-sm text-tkm-body">
             <a href="https://instagram.com/tkmtrading" target="_blank" rel="noopener noreferrer" className="text-tkm-teal hover:underline">@tkmtrading</a>
           </p>
         </div>
 
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3">
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-[6px]">
           {images.map((img, i) => (
-            <div key={i} className="relative aspect-square overflow-hidden rounded-lg group cursor-pointer">
+            <div key={i} className="relative aspect-square overflow-hidden group cursor-pointer">
               <img src={img} alt={`TKM lifestyle ${i + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-              <div className="absolute inset-0 bg-tkm-teal/0 group-hover:bg-tkm-teal/70 transition-colors duration-300 flex items-center justify-center">
+              <div className="absolute inset-0 bg-tkm-navy/0 group-hover:bg-tkm-navy/70 transition-colors duration-300 flex items-center justify-center">
                 <Instagram size={28} className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
@@ -38,7 +37,7 @@ export const InstagramFeed: React.FC = () => {
             href="https://instagram.com/tkmtrading"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block border-2 border-tkm-teal text-tkm-teal px-8 py-3 rounded-md text-sm font-bold hover:bg-tkm-teal hover:text-white transition-all"
+            className="inline-block border-[1.5px] border-tkm-navy text-tkm-navy px-8 py-3 rounded text-[12px] font-semibold uppercase tracking-[1.5px] hover:bg-tkm-navy hover:text-white transition-all"
           >
             Follow on Instagram
           </a>
