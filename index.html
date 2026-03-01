@@ -3,40 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TKM Trading Shop | Premium Sanitaryware & Kitchen Faucets Pakistan</title>
+    <title>Premium Kitchen Faucets & Bathroom Fittings in Pakistan | TKM</title>
     <meta name="description" content="Premium bathroom fittings and kitchen faucets in Pakistan. TKM Trading offers imported sanitaryware, rain showers, sinks and accessories with nationwide delivery." />
     <meta name="keywords" content="sanitaryware pakistan, kitchen faucets, bathroom accessories, TKM trading, luxury fittings, shower systems, sink organizers" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20fill='%2300B5AD'/%3E%3Ctext%20x='16'%20y='22'%20text-anchor='middle'%20font-size='20'%20fill='white'%20font-family='Inter,sans-serif'%3ET%3C/text%3E%3C/svg%3E">
-    <meta property="og:title" content="TKM Trading Shop | Premium Sanitaryware & Kitchen Faucets Pakistan" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20fill='%23008B9B'/%3E%3Ctext%20x='16'%20y='22'%20text-anchor='middle'%20font-size='20'%20fill='white'%20font-family='DM+Sans,sans-serif'%3ET%3C/text%3E%3C/svg%3E">
+    <meta property="og:title" content="Premium Kitchen Faucets & Bathroom Fittings in Pakistan | TKM" />
     <meta property="og:description" content="Premium bathroom fittings and kitchen faucets in Pakistan. TKM Trading offers imported sanitaryware, rain showers, sinks and accessories with nationwide delivery." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="TKM Trading Shop | Premium Sanitaryware & Kitchen Faucets Pakistan" />
+    <meta name="twitter:title" content="Premium Kitchen Faucets & Bathroom Fittings in Pakistan | TKM" />
     <meta name="twitter:description" content="Premium bathroom fittings and kitchen faucets in Pakistan." />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['DM Sans', 'sans-serif'],
               display: ['Playfair Display', 'serif'],
             },
             colors: {
               tkm: {
-                teal: '#00B5AD',
-                hover: '#009A93',
+                teal: '#008B9B',
+                'teal-hover': '#007585',
+                navy: '#1B3A5C',
+                copper: '#C17F3A',
                 black: '#1A1A1A',
                 dark: '#2b2b2b',
-                gray: '#F8F8F8',
+                cream: '#F9F7F4',
                 light: '#FFFFFF',
-                brass: '#C9A84C',
-                accent: '#E5E5E5',
-                body: '#555555',
-                faqbg: '#F0FAFA',
+                brass: '#C17F3A',
+                divider: '#E8E0D5',
+                body: '#5C5C6B',
+                muted: '#9B9BAA',
+                faqbg: '#F9F7F4',
+                gray: '#F9F7F4',
               }
             },
             container: {
@@ -51,12 +55,17 @@
               },
             },
             animation: {
-              marquee: 'marquee 15s linear infinite',
+              marquee: 'marquee 35s linear infinite',
+              'pulse-scale': 'pulseScale 3s ease-in-out infinite',
             },
             keyframes: {
               marquee: {
-                '0%': { transform: 'translateX(100%)' },
-                '100%': { transform: 'translateX(-100%)' },
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-50%)' },
+              },
+              pulseScale: {
+                '0%, 100%': { transform: 'scale(1)' },
+                '50%': { transform: 'scale(1.08)' },
               }
             }
           }
@@ -68,15 +77,18 @@
         width: 6px;
       }
       ::-webkit-scrollbar-track {
-        background: #F6F4F1; 
+        background: #F9F7F4; 
       }
       ::-webkit-scrollbar-thumb {
-        background: #00B5AD; 
+        background: #008B9B; 
         border-radius: 3px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #009A93; 
+        background: #007585; 
       }
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+      .marquee-track:hover { animation-play-state: paused !important; }
     </style>
     <script type="importmap">
     {
@@ -92,7 +104,7 @@
     </script>
     <link rel="stylesheet" href="/index.css">
   </head>
-  <body class="bg-white text-tkm-black antialiased selection:bg-tkm-teal selection:text-white font-sans">
+  <body class="bg-white text-tkm-navy antialiased selection:bg-tkm-teal selection:text-white font-sans">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

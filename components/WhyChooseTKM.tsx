@@ -1,30 +1,81 @@
-import React from 'react';
-import { ShieldCheck, Hammer, Palette, Users } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { ShieldCheck, Package, HeadphonesIcon } from 'lucide-react';
 
-const reasons = [
-  { icon: ShieldCheck, title: '5-Year Warranty', desc: 'Long-term confidence in every purchase.' },
-  { icon: Hammer, title: 'Durable Brass Construction', desc: 'Heavy-duty materials built to last.' },
-  { icon: Palette, title: 'Modern Minimal Designs', desc: 'Clean aesthetics for contemporary homes.' },
-  { icon: Users, title: 'Trusted by Thousands', desc: 'Serving homeowners across Pakistan.' },
+const stats = [
+  { number: 5000, suffix: '+', label: 'Products Sold' },
+  { number: 3000, suffix: '+', label: 'Happy Customers' },
+  { number: 50, suffix: '+', label: 'Cities Delivered' },
+  { number: 4.8, suffix: '', label: 'Customer Rating' },
 ];
 
-export const WhyChooseTKM: React.FC = () => {
-  return (
-    <section className="bg-tkm-gray py-[60px] md:py-[100px] px-6 md:px-12">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="font-display text-3xl md:text-[44px] leading-tight text-tkm-black mb-4">
-          Why Customers Choose TKM
-        </h2>
-        <div className="w-16 h-[2px] bg-tkm-brass mx-auto mb-12 md:mb-16" />
+const features = [
+  { icon: ShieldCheck, title: 'Genuine Imports', desc: 'Sourced directly from certified manufacturers' },
+  { icon: Package, title: 'Quality Assured', desc: 'Every fitting tested before dispatch' },
+  { icon: HeadphonesIcon, title: 'After-Sale Care', desc: 'Warranty claims and installation support' },
+];
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-          {reasons.map((r, i) => (
-            <div key={i} className="flex flex-col items-center">
-              <div className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center mb-5">
-                <r.icon size={24} className="text-tkm-teal" strokeWidth={1.5} />
-              </div>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-tkm-black mb-2">{r.title}</h3>
-              <p className="text-sm text-gray-500">{r.desc}</p>
+const CountUp: React.FC<{ target: number; suffix: string; started: boolean }> = ({ target, suffix, started }) => {
+  const [count, setCount] = useState(0);
+  
+  useEffect(() => {
+    if (!started) return;
+    const isDecimal = target % 1 !== 0;
+    const duration = 2000;
+    const steps = 60;
+    const increment = target / steps;
+    let current = 0;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(isDecimal ? Math.round(current * 10) / 10 : Math.floor(current));
+      }
+    }, duration / steps);
+    return () => clearInterval(timer);
+  }, [started, target]);
+
+  return <span>{target % 1 !== 0 ? count.toFixed(1) : count.toLocaleString()}{suffix}</span>;
+};
+
+export const WhyChooseTKM: React.FC = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { setStarted(true); observer.disconnect(); }
+    }, { threshold: 0.3 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section ref={ref} className="bg-tkm-navy py-16 md:py-24 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto">
+        {/* Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 mb-16">
+          {stats.map((s, i) => (
+            <div key={i} className={`text-center ${i < 3 ? 'md:border-r md:border-white/15' : ''}`}>
+              <p className="font-display text-white text-4xl md:text-[56px] leading-none mb-2">
+                <CountUp target={s.number} suffix={s.suffix} started={started} />
+              </p>
+              <div className="w-[50px] h-[2px] bg-tkm-copper mx-auto mb-3" />
+              <p className="text-white/65 text-[13px] uppercase tracking-[2px]">{s.label}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Feature cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {features.map((f, i) => (
+            <div key={i} className="border border-white/12 rounded-lg p-8 bg-white/5">
+              <f.icon size={36} className="text-tkm-copper mb-5" strokeWidth={1.5} />
+              <h3 className="font-display text-white text-lg mb-2">{f.title}</h3>
+              <p className="text-white/65 text-sm leading-[1.7]">{f.desc}</p>
             </div>
           ))}
         </div>

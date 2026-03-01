@@ -29,7 +29,7 @@ import { fetchShopifyProducts, createCheckout } from './lib/shopify';
 import CustomerReviews from './components/CustomerReviews';
 import FaqSection from './components/FaqSection';
 import { FadeInSection } from './components/common/FadeInSection';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, ArrowUp } from 'lucide-react';
 
 const App: React.FC = () => {
   const [view, setView] = useState<ViewType>('home');
@@ -40,6 +40,13 @@ const App: React.FC = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const [featuredFilter, setFeaturedFilter] = useState('All');
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setShowBackToTop(window.scrollY > 500);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const initShopify = async () => {
@@ -97,13 +104,12 @@ const App: React.FC = () => {
     ? realProducts.filter(p => p.category === currentProduct.category && p.id !== currentProduct.id).slice(0, 4)
     : [];
 
-  // Filter featured products
   const filterTabs = ['All', 'Kitchen', 'Bathroom', 'Showers', 'Sinks'];
   const filteredProducts = featuredFilter === 'All' 
     ? realProducts.slice(0, 8) 
     : realProducts.filter(p => p.category?.toLowerCase().includes(featuredFilter.toLowerCase())).slice(0, 8);
 
-  let seoTitle = 'TKM Trading Shop | Premium Sanitaryware & Kitchen Faucets Pakistan';
+  let seoTitle = 'Premium Kitchen Faucets & Bathroom Fittings in Pakistan | TKM';
   let seoDescription = 'Premium bathroom fittings and kitchen faucets in Pakistan. TKM Trading offers imported sanitaryware, rain showers, sinks and accessories with free nationwide delivery.';
   let seoImage = 'https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=2868&auto=format&fit=crop';
   let seoType: 'website' | 'product' | 'article' = 'website';
@@ -170,10 +176,12 @@ const App: React.FC = () => {
       <main className="flex-grow w-full">
         {view === 'home' && (
           <>
-            {/* 3. Hero */}
-            <Hero onNavigate={navigateTo} />
+            {/* 3. Hero — sits behind transparent header */}
+            <div className="-mt-[60px] md:-mt-[80px]">
+              <Hero onNavigate={navigateTo} />
+            </div>
 
-            {/* 4. Trust / USP Bar */}
+            {/* 4. Trust Bar */}
             <FadeInSection>
               <BenefitsBar />
             </FadeInSection>
@@ -185,28 +193,27 @@ const App: React.FC = () => {
 
             {/* 6. Featured Products */}
             <FadeInSection>
-              <section className="py-12 md:py-20 px-6 md:px-12 bg-tkm-gray">
+              <section className="py-16 md:py-24 px-6 md:px-12 bg-white">
                 <div className="max-w-7xl mx-auto">
-                  <div className="text-center mb-8">
-                    <span className="text-tkm-teal text-xs uppercase tracking-[0.2em] font-semibold">Hand-Picked</span>
-                    <h2 className="font-display text-3xl md:text-4xl text-tkm-black mt-2 mb-2">Featured Products</h2>
-                    <p className="text-sm text-tkm-body">Top-selling imported fittings loved by Pakistani homeowners</p>
-                    <div className="w-12 h-[2px] bg-tkm-brass mx-auto mt-4" />
+                  <div className="text-center mb-10">
+                    <span className="inline-block bg-tkm-teal text-white text-[11px] font-medium uppercase tracking-[3px] px-4 py-1.5 rounded-sm mb-4">HAND-PICKED</span>
+                    <h2 className="font-display text-3xl md:text-[42px] text-tkm-navy leading-tight">Featured Products</h2>
+                    <p className="text-base text-tkm-muted mt-2">Imported fittings loved by Pakistani homeowners</p>
                   </div>
 
                   {/* Filter Tabs */}
-                  <div className="flex flex-wrap justify-center gap-2 mb-8">
+                  <div className="flex flex-wrap justify-center gap-2 mb-10">
                     {filterTabs.map(tab => (
                       <button
                         key={tab}
                         onClick={() => setFeaturedFilter(tab)}
-                        className={`px-5 py-2 rounded-full text-xs font-bold transition-colors ${
+                        className={`px-5 py-2 rounded-full text-[12px] font-semibold uppercase tracking-[1px] transition-all ${
                           featuredFilter === tab 
                             ? 'bg-tkm-teal text-white' 
-                            : 'bg-white text-tkm-body hover:bg-tkm-teal/10'
+                            : 'bg-white text-tkm-muted border border-tkm-divider hover:bg-tkm-cream hover:text-tkm-teal'
                         }`}
                       >
-                        {tab}
+                        {tab === 'All' ? 'All Products' : tab}
                       </button>
                     ))}
                   </div>
@@ -217,10 +224,10 @@ const App: React.FC = () => {
                     ))}
                   </div>
 
-                  <div className="text-center mt-10">
+                  <div className="text-center mt-12">
                     <button 
                       onClick={() => navigateTo('collection', 'featured-products')}
-                      className="border-2 border-tkm-teal text-tkm-teal px-8 py-3 rounded-md text-sm font-bold hover:bg-tkm-teal hover:text-white transition-all"
+                      className="border-[1.5px] border-tkm-navy text-tkm-navy px-8 py-3 rounded text-[12px] font-semibold uppercase tracking-[1.5px] hover:bg-tkm-navy hover:text-white transition-all"
                     >
                       View All Products
                     </button>
@@ -229,7 +236,7 @@ const App: React.FC = () => {
               </section>
             </FadeInSection>
 
-            {/* 7. Flash Sale */}
+            {/* 7. Flash Sale Strip */}
             <FadeInSection>
               <FlashSale onNavigate={navigateTo} onAddToCart={addToCart} onQuickView={setQuickViewProduct} products={realProducts} />
             </FadeInSection>
@@ -300,12 +307,23 @@ const App: React.FC = () => {
         onAddToCart={addToCart} onViewDetails={(p) => navigateTo('product', p.id)}
       />
 
+      {/* Back to Top */}
+      {showBackToTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-24 right-6 z-50 bg-tkm-teal text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-tkm-teal-hover transition-colors"
+          aria-label="Back to top"
+        >
+          <ArrowUp size={18} />
+        </button>
+      )}
+
       {/* WhatsApp FAB */}
       <a
-        href="https://wa.me/923001234567"
+        href="https://wa.me/923001234567?text=Hi%20TKM%2C%20I%27d%20like%20to%20know%20more%20about%20your%20products"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors hover:scale-110 transform"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform animate-pulse-scale"
         aria-label="Chat on WhatsApp"
       >
         <MessageCircle size={28} />

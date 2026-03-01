@@ -1,5 +1,4 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
 import { ViewType } from '../types';
 
 interface Props {
@@ -8,19 +7,26 @@ interface Props {
 
 export const BottomBanner: React.FC<Props> = ({ onNavigate }) => {
   return (
-    <section className="bg-tkm-black py-16 md:py-24">
-      <div className="max-w-3xl mx-auto text-center px-6">
-        <h2 className="font-display text-3xl md:text-5xl text-white mb-5 leading-tight">
-          Upgrade Your Space Today
+    <section className="relative min-h-[400px] flex items-center justify-center overflow-hidden">
+      <img 
+        src="https://images.unsplash.com/photo-1604014237800-1c9102c219da?q=80&w=2868&auto=format&fit=crop"
+        alt="Upgrade your space with TKM luxury fittings Pakistan"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0" style={{ background: 'rgba(27,58,92,0.75)' }} />
+      
+      <div className="relative z-10 text-center px-6 py-16 md:py-24">
+        <h2 className="font-display text-3xl md:text-[48px] text-white mb-4 leading-tight">
+          Ready to Upgrade Your Space?
         </h2>
-        <p className="text-white/60 text-sm md:text-base mb-8 max-w-lg mx-auto">
+        <p className="text-white/80 text-lg mb-8 max-w-lg mx-auto">
           Transform your home with premium imported fittings. Free delivery across Pakistan.
         </p>
         <button
           onClick={() => onNavigate && onNavigate('collection', 'featured-products')}
-          className="bg-tkm-teal text-white px-10 py-4 rounded-md text-sm font-bold hover:bg-tkm-hover transition-all duration-300 inline-flex items-center gap-2"
+          className="bg-tkm-copper text-tkm-navy px-10 py-4 rounded text-[12px] font-bold uppercase tracking-[1.5px] hover:brightness-110 transition-all inline-flex items-center gap-2"
         >
-          Shop Now <ArrowRight size={16} />
+          Shop the Collection →
         </button>
       </div>
     </section>
