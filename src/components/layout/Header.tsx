@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Search, ShoppingBag, User, Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
-import { ViewType } from '../types';
+import { ViewType } from '@/types/types';
 
 interface HeaderProps {
     onNavigate: (view: ViewType, id?: string) => void;

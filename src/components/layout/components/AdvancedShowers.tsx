@@ -1,6 +1,6 @@
 import React from 'react';
 import { SectionTitle } from './common/SectionTitle';
-import { ViewType } from '../types';
+import { ViewType } from '@/types/types';
 
 interface Props {
     onNavigate?: (view: ViewType, id?: string) => void;

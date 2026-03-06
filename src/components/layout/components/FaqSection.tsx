@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ViewType } from "../types";
+import { ViewType } from "@/types/types";
 
 type FaqItem = { id: number; question: string; answer: string };
 

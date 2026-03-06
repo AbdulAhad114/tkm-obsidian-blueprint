@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-
 import React from "react";
 
 type ReviewsCarouselProps = {
@@ -10,7 +9,7 @@ type ReviewsCarouselProps = {
 export default function ReviewsCarousel({ children }: ReviewsCarouselProps) {
   const [emblaRef, embla] = useEmblaCarousel({
     align: "start",
-    loop: false,
+    loop: true,
   });
 
   // STEP 4: control arrow disabled state
@@ -36,6 +35,19 @@ export default function ReviewsCarousel({ children }: ReviewsCarouselProps) {
     };
   }, [embla, updateButtons]);
 
+  // Autoplay: continuously scroll forward in an infinite loop
+  useEffect(() => {
+    if (!embla) return;
+
+    const autoplay = () => {
+      if (!embla) return;
+      embla.scrollNext();
+    };
+
+    const id = window.setInterval(autoplay, 2200);
+    return () => window.clearInterval(id);
+  }, [embla]);
+
   const scrollPrev = useCallback(() => embla?.scrollPrev(), [embla]);
   const scrollNext = useCallback(() => embla?.scrollNext(), [embla]);
 
@@ -44,7 +56,7 @@ export default function ReviewsCarousel({ children }: ReviewsCarouselProps) {
       {/* VIEWPORT */}
       <div ref={emblaRef} className="overflow-hidden">
         {/* TRACK */}
-        <div className="flex gap-6">
+        <div className="flex gap-6 px-3">
           {children}
         </div>
       </div>

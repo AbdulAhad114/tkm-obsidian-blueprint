@@ -1,34 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { BenefitsBar } from './components/BenefitsBar';
-import { BrandAuthority } from './components/BrandAuthority';
-import { ShopByArea } from './components/ShopByArea';
-import { LifestyleBreak } from './components/LifestyleBreak';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
 
-import { AdvancedShowers } from './components/AdvancedShowers';
-import { KitchenMixers } from './components/KitchenMixers';
-import { StainlessSteel } from './components/StainlessSteel';
-import { LifestyleBreak2 } from './components/LifestyleBreak2';
-import SocialReels from './components/SocialReels';
-import { BottomBanner } from './components/BottomBanner';
-import { Footer } from './components/Footer';
-import { GeminiAssistant } from './components/GeminiAssistant';
-import { ComplaintForm } from './components/ComplaintForm';
-import { CollectionPage } from './components/CollectionPage';
-import { ProductDetail } from './components/ProductDetail';
-import { CartDrawer } from './components/cart/CartDrawer';
-import { QuickViewModal } from './components/QuickViewModal';
-import { ProductCard } from './components/ProductCard';
-import { KitchenLanding } from './components/KitchenLanding';
-import { BathLanding } from './components/BathLanding';
-import { collections } from './data/collections';
-import { SEOHead } from './components/common/SEOHead';
-import { Product, CartItem, ViewType } from './types';
-import { fetchShopifyProducts, createCheckout } from './lib/shopify';
-import CustomerReviews from './components/CustomerReviews';
-import FaqSection from './components/FaqSection';
-import { FadeInSection } from './components/common/FadeInSection';
+import { Hero } from '@/components/layout/components/Hero';
+import { BrandAuthority } from '@/components/layout/components/BrandAuthority';
+import { ShopByArea } from '@/components/layout/components/ShopByArea';
+import { LifestyleBreak } from '@/components/layout/components/LifestyleBreak';
+import { AdvancedShowers } from '@/components/layout/components/AdvancedShowers';
+import { KitchenMixers } from '@/components/layout/components/KitchenMixers';
+import { StainlessSteel } from '@/components/layout/components/StainlessSteel';
+import { LifestyleBreak2 } from '@/components/layout/components/LifestyleBreak2';
+import SocialReels from '@/components/ui/SocialReels';
+import { BottomBanner } from '@/components/ui/BottomBanner';
+import { BenefitsBar } from '@/components/ui/BenefitsBar';
+
+import { GeminiAssistant } from '@/components/layout/components/GeminiAssistant';
+import { ComplaintForm } from '@/components/layout/components/ComplaintForm';
+import { CollectionPage } from '@/components/layout/components/CollectionPage';
+import { ProductDetail } from '@/features/products/ProductDetail';
+import { CartDrawer } from '@/features/cart/CartDrawer';
+import { QuickViewModal } from '@/features/products/QuickViewModal';
+import { ProductCard } from '@/features/products/ProductCard';
+import { KitchenLanding } from '@/components/layout/components/KitchenLanding';
+import { BathLanding } from '@/components/layout/components/BathLanding';
+
+import { collections } from '@/data/collections';
+import { SEOHead } from '@/components/layout/components/common/SEOHead';
+import { Product, CartItem, ViewType } from '@/types/types';
+import { fetchShopifyProducts, createCheckout } from '@/lib/shopify';
+import CustomerReviews from '@/components/layout/components/CustomerReviews';
+import FaqSection from '@/components/layout/components/FaqSection';
+import { FadeInSection } from '@/components/layout/components/common/FadeInSection';
 
 const App: React.FC = () => {
   const [view, setView] = useState<ViewType>('home');

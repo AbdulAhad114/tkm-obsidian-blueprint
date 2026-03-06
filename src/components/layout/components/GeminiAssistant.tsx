@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Sparkles, Loader2 } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
-import { ChatMessage } from '../types';
+import { ChatMessage } from '@/types/types';
 
 export const GeminiAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

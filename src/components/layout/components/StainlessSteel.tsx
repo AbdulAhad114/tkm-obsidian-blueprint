@@ -1,7 +1,7 @@
 import React from 'react';
-import { SectionTitle } from './common/SectionTitle';
-import { Product, ViewType } from '../types';
-import { ProductCard } from './ProductCard';
+import { SectionTitle } from '@/components/layout/components/common/SectionTitle';
+import { Product, ViewType } from '@/types/types';
+import { ProductCard } from '@/features/products/ProductCard';
 
 interface Props {
     onNavigate?: (view: ViewType, id?: string) => void;

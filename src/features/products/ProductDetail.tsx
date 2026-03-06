@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Product } from '../types';
+import { Product } from '@/types/types';
 import { ShoppingCart, Star, Truck, ShieldCheck, RefreshCw, Share2, Plus, Minus, ChevronDown, Check, Play, HelpCircle, Package, MapPin } from 'lucide-react';
-import { SectionTitle } from './common/SectionTitle';
-import { ProductCard } from './ProductCard';
+import { SectionTitle } from '@/components/layout/components/common/SectionTitle';
+import { ProductCard } from '@/features/products/ProductCard';
 
 interface ProductDetailProps {
   product: Product;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { ViewType } from '../types';
+import { ViewType } from '@/types/types';
 
 interface Props {
   onNavigate?: (view: ViewType, id?: string) => void;

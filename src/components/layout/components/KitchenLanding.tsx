@@ -1,7 +1,7 @@
 import React from 'react';
-import { ProductCard } from './ProductCard';
-import { InnovationSection } from './common/InnovationSection';
-import { Product, ViewType } from '../types';
+import { ProductCard } from '@/features/products/ProductCard';
+import { InnovationSection } from '@/components/layout/components/common/InnovationSection';
+import { Product, ViewType } from '@/types/types';
 import { MessageCircle } from 'lucide-react';
 
 interface KitchenLandingProps {

@@ -1,7 +1,7 @@
 import React from 'react';
-import { collections } from '../data/collections';
-import { ProductCard } from './ProductCard';
-import { InnovationSection } from './common/InnovationSection';
+import { collections } from '@/data/collections';
+import { ProductCard } from '@/features/products/ProductCard';
+import { InnovationSection } from '@/components/layout/components/common/InnovationSection';
 import { ChevronRight, Play } from 'lucide-react';
 
 interface CollectionPageProps {

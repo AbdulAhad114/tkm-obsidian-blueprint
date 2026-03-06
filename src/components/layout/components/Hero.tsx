@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewType } from '../types';
+import { ViewType } from '@/types/types';
 
 interface HeroProps {
   onNavigate?: (view: ViewType, id?: string) => void;
